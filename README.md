@@ -28,7 +28,6 @@ The **Recipe Finder App** is a web application built with **Next.js** and **Tail
 ```
 recipe-finder-app/
 ├── .next/
-├── node_modules/
 ├── public/
 │   └── Recipe-Finder/
 ├── src/
@@ -78,7 +77,7 @@ recipe-finder-app/
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/your-username/recipe-finder-app.git
+   git clone https://github.com/dimaskq/recipe-finder-app.git
    cd recipe-finder-app
    ```
 
@@ -98,15 +97,11 @@ recipe-finder-app/
      NEXT_PUBLIC_SPOONACULAR_API_KEY=your_api_key_here
      ```
 
-   - *Note*: Exposing the API key in `NEXT_PUBLIC_` variables makes it visible in the browser. For production, consider moving API calls to a server-side context (e.g., API routes or `getServerSideProps`).
-
 4. **Run the Development Server**:
 
    ```bash
    npm run dev
    ```
-
-   - Open http://localhost:3000 in your browser to view the application.
 
 5. **Build for Production**:
 
@@ -146,12 +141,6 @@ Below are screenshots of the application:
 
 - **Recipe Details Page**: *Caption*: The recipe details page showing the title and ingredients.
 
-*Note*: Replace the placeholder paths (`screenshots/*.png`) with actual screenshot files in your repository's `screenshots/` folder.
-
-## Screencast
-
-A screencast demonstrating the application's functionality is available at: Link to Screencast*Note*: Replace the placeholder link with a URL to your screencast (e.g., hosted on YouTube, Vimeo, or another platform).
-
 ## Development Notes
 
 - **API Caching**: API responses are cached for 1 minute using Next.js's `next.revalidate` option to reduce API calls and improve performance.
@@ -190,8 +179,6 @@ A screencast demonstrating the application's functionality is available at: Link
 
 ## Contact
 
-For any questions or feedback, please contact \[your-email@example.com\] or open an issue in the repository.
+For any questions or feedback, please contact \[dmtro.kravchenko@gmail.com\] or open an issue in the repository.
 
 ---
-
-*Built by \[Your Name\] for the Front-end JS Engineer Test Assessment*
