@@ -1,36 +1,197 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Recipe Finder App
 
-## Getting Started
+## Overview
 
-First, run the development server:
+The **Recipe Finder App** is a web application built with **Next.js** and **Tailwind CSS** that allows users to search for recipes using advanced filters, view a list of recipes, and access detailed recipe information. The application integrates with the Spoonacular API to fetch recipe data and implements server-side rendering (SSR) for improved performance and SEO. This project was developed as part of a front-end JavaScript engineer test assessment.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+
+- **Search Page**: Users can search for recipes by entering a query (e.g., "pasta"), selecting a cuisine (e.g., Italian, Mexican, Chinese), and specifying a maximum preparation time. The "Next" button is enabled only when at least one field is filled.
+- **Recipes Page**: Displays a list of recipes fetched from the Spoonacular API based on search parameters, with each recipe showing a title and image. Clicking a recipe card navigates to its details page.
+- **Recipe Details Page**: Shows detailed information about a selected recipe, including the title and list of ingredients.
+- **Responsive Design**: Styled with Tailwind CSS to ensure a consistent and user-friendly experience across devices.
+- **Loading States**: Uses React `Suspense` to handle loading states during data fetching.
+- **Error Handling**: Implements error handling for API failures.
+- **Code Quality**: Configured with ESLint and Prettier for consistent code style and quality.
+
+## Tech Stack
+
+- **Framework**: Next.js (React framework for SSR and static site generation)
+- **Styling**: Tailwind CSS, PostCSS
+- **API**: Spoonacular API for recipe data
+- **TypeScript**: For type safety and better developer experience
+- **Tools**: ESLint, Prettier
+- **Environment**: Node.js
+
+## Project Structure
+
+```
+recipe-finder-app/
+├── .next/
+├── node_modules/
+├── public/
+│   └── Recipe-Finder/
+├── src/
+│   ├── app/
+│   │   ├── recipes/
+│   │   │   └── [id]/
+│   │   │       └── page.tsx
+│   │   ├── global.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components/
+│   │   ├── Header.tsx
+│   │   ├── Loading.tsx
+│   │   ├── RecipeCard.tsx
+│   │   └── form/
+│   │       ├── InputField.tsx
+│   │       ├── SelectField.tsx
+│   │       ├── NumberField.tsx
+│   │       ├── SubmitButton.tsx
+│   │       ├── SearchForm.tsx
+│   │       └── types.ts
+│   └── lib/
+│       └── api.ts
+├── .env.local
+├── .eslintrc.json
+├── .gitignore
+├── .prettierrc
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── postcss.config.mjs
+├── README.md
+├── tailwind.config.js
+└── tsconfig.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Prerequisites
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Node.js**: Version 18.x or higher
+- **npm**: Version 8.x or higher
+- **Spoonacular API Key**: Sign up at Spoonacular API to obtain a free API key.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Setup Instructions
 
-## Learn More
+1. **Clone the Repository**:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   git clone https://github.com/your-username/recipe-finder-app.git
+   cd recipe-finder-app
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install Dependencies**:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+3. **Configure Environment Variables**:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   - Create a `.env.local` file in the root directory.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   - Add your Spoonacular API key:
+
+     ```
+     NEXT_PUBLIC_SPOONACULAR_API_KEY=your_api_key_here
+     ```
+
+   - *Note*: Exposing the API key in `NEXT_PUBLIC_` variables makes it visible in the browser. For production, consider moving API calls to a server-side context (e.g., API routes or `getServerSideProps`).
+
+4. **Run the Development Server**:
+
+   ```bash
+   npm run dev
+   ```
+
+   - Open http://localhost:3000 in your browser to view the application.
+
+5. **Build for Production**:
+
+   ```bash
+   npm run build
+   ```
+
+   - After building, start the production server:
+
+     ```bash
+     npm run start
+     ```
+
+## Usage
+
+1. **Search for Recipes**:
+
+   - On the homepage (`/`), use the search form to enter a query (e.g., "pasta"), select a cuisine (e.g., "Italian"), or specify a maximum preparation time (e.g., "30" minutes).
+   - Click the "Next" button to navigate to the recipes page with the applied filters.
+
+2. **View Recipes**:
+
+   - The `/recipes` page displays a list of recipes matching your search criteria.
+   - Click on a recipe card to view its details.
+
+3. **View Recipe Details**:
+
+   - The `/recipes/[id]` page shows the recipe's title, ingredients, and other optional details.
+
+## Screenshots
+
+Below are screenshots of the application:
+
+- **Search Page**: *Caption*: The homepage with the search form, including fields for query, cuisine, and max preparation time.
+
+- **Recipes Page**: *Caption*: The recipes page displaying a list of recipes with titles and images.
+
+- **Recipe Details Page**: *Caption*: The recipe details page showing the title and ingredients.
+
+*Note*: Replace the placeholder paths (`screenshots/*.png`) with actual screenshot files in your repository's `screenshots/` folder.
+
+## Screencast
+
+A screencast demonstrating the application's functionality is available at: Link to Screencast*Note*: Replace the placeholder link with a URL to your screencast (e.g., hosted on YouTube, Vimeo, or another platform).
+
+## Development Notes
+
+- **API Caching**: API responses are cached for 1 minute using Next.js's `next.revalidate` option to reduce API calls and improve performance.
+- **Modular Components**: The search form is split into reusable components (`InputField`, `SelectField`, `NumberField`, `SubmitButton`) located in `src/components/form/` for better maintainability.
+- **Accessibility**: Components include ARIA attributes (e.g., `aria-describedby`, `aria-disabled`) to improve accessibility.
+- **Type Safety**: TypeScript is used to ensure type safety for props and API responses, with shared types defined in `src/components/form/types.ts`.
+- **Styling**: Tailwind CSS provides responsive and consistent styling across the application, configured via `tailwind.config.js` and processed with PostCSS (`postcss.config.js` and `postcss.config.mjs`).
+- **API Logic**: API fetching functions (`fetchRecipes`, `fetchRecipeDetails`) are located in `src/lib/api.ts` for centralized data management.
+- **Layout**: The `src/app/layout.tsx` file defines the root layout, including the `Header` component, while `src/app/global.css` contains global styles.
+
+## ESLint and Prettier Configuration
+
+- **ESLint**: Configured in `.eslintrc.json` to enforce JavaScript/TypeScript best practices.
+
+- **Prettier**: Configured in `.prettierrc` to ensure consistent code formatting.
+
+- Run the following to check for linting issues:
+
+  ```bash
+  npm run lint
+  ```
+
+## Troubleshooting
+
+- **API Key Issues**: Ensure your Spoonacular API key is correctly set in `.env.local`. If you exceed the free tier's quota, you may need to wait or upgrade your plan.
+- **404 Errors**: Verify that the `/recipes` and `/recipes/[id]` routes are correctly set up in the `src/app/` directory.
+- **Styling Issues**: Clear the Next.js cache (`npm run clean`) and restart the development server if Tailwind CSS styles are not applied. Ensure `global.css` and `tailwind.config.js` are properly configured.
+
+## Future Improvements
+
+- Add pagination for the recipes list to handle large result sets.
+- Implement client-side filtering for faster interaction with search results.
+- Add unit tests using Jest and React Testing Library.
+- Move API key to server-side logic to enhance security.
+- Deploy the application using Vercel or GitHub Actions for CI/CD.
+
+## Contact
+
+For any questions or feedback, please contact \[your-email@example.com\] or open an issue in the repository.
+
+---
+
+*Built by \[Your Name\] for the Front-end JS Engineer Test Assessment*
